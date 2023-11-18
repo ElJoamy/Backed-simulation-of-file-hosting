@@ -1,0 +1,40 @@
+version: '3.8'
+services:
+  db2:
+    image: mysql:latest
+    volumes:
+      - ./back.sql:/docker-entrypoint-initdb.d/back.sql
+      - ./dbdata2:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+    ports:
+      - "3306:3306"
+    networks:
+      backend:
+        ipv4_address: ${IPV4_ADDRESS2}
+
+  redis:
+    image: redis:latest
+    volumes:
+      - ./cache:/data
+    ports:
+      - "6379:6379"
+    command: redis-server --save 20 1 --loglevel warning --requirepass eYVX7EwVmmxKPCDmwMtyKVge8oLd2t81
+    networks:
+      backend:
+        ipv4_address: ${IPV4_ADDRESS_REDIS}
+
+volumes:
+  dbdata2:
+  cache:
+
+networks:
+  backend:
+    driver: ${NETWORK_DRIVER} # Utiliza la variable de entorno NETWORK_DRIVER
+    driver_opts:
+      parent: ${PARENT} # Utiliza la variable de entorno PARENT
+    ipam:
+      config:
+        - subnet: ${SUBNET} # Utiliza la variable de entorno SUBNET
+          gateway: ${GATEWAY} # Utiliza la variable de entorno GATEWAY
