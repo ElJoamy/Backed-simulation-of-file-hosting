@@ -1,7 +1,6 @@
 import express, { Request, Response } from 'express';
-import morgan from 'morgan';
 import dotenv from 'dotenv';
-
+import morgan from 'morgan';
 import { AppDataSource } from "./infrastructure/config/dataSource";
 import { UserService } from './app/services/userService';
 import { UserRepositoryImpl } from './infrastructure/repositories/userRepositoryImpl';

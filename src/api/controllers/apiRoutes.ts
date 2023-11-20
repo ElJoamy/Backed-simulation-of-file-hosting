@@ -8,6 +8,9 @@ import { AuthController } from "./authController";
 import { RoleController } from "./roleController";
 import { UserController } from "./userController";
 import { RedisCacheService } from './../../infrastructure/cache/redis.cache';
+import { fileRepositoryImpl } from "../../infrastructure/repositories/fileRepositoryImpl";
+import { FileService } from './../../app/services/fileService';
+import { FileController } from "./fileController";
 
 const redisCacheService = new RedisCacheService();
 
@@ -24,10 +27,15 @@ const userController = new UserController(userService);
 const authService = new AuthService(userRepository, encrypt, redisCacheService);
 const authController = new AuthController(authService);
 
+const fileRepository = new fileRepositoryImpl();
+const fileService = new FileService(fileRepository, userRepository, redisCacheService);
+const fileController = new FileController(fileService);
+
 const API:string = '/api';
 
 export const routes = (server: any) => {
     server.use(`${API}/users`, userController.router);
     server.use(`${API}/roles`, roleController.router);
+    server.use(`${API}/files`, fileController.router);
     server.use(`${API}/auth`, authController.router);
 };
