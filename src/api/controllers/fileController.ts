@@ -54,12 +54,12 @@ export class FileController {
     public async deleteFile(req: Request, res: Response): Promise<Response> {
         const { id } = req.params;
         try {
-            logger.debug(`Intentando eliminar al archivo con ID: ${id}`);
+            logger.info(`Intentando eliminar al archivo con ID: ${id}`);
             await this.fileService.deleteFile(id);
             logger.info(`Archivo con ID: ${id} eliminado con éxito`);
             return res.status(200).json({ message: 'Archivo eliminado con éxito' });
         } catch (error) {
-            logger.error(`Error al eliminar al usuario con ID: ${id}. Error: ${error}`);
+            logger.error(`Error al eliminar al archivo con ID: ${id}. Error: ${error}`);
             return res.status(500).json({ message: error });
         }
     }
@@ -83,7 +83,7 @@ export class FileController {
         this.router.post('/', this.createFile.bind(this));
         this.router.get('/', this.getFiles.bind(this));
         this.router.get('/myfiles/:id', this.getFilesByUserId.bind(this));
-        this.router.delete('/:userId', this.deleteFile.bind(this));
-        this.router.put('/:userId', this.updateFile.bind(this));
+        this.router.delete('/:id', this.deleteFile.bind(this));
+        this.router.put('/:id', this.updateFile.bind(this));
     }
 }

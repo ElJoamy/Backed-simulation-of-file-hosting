@@ -8,14 +8,12 @@ import { UserEntity } from './../entities/userEntity';
 
 export class fileRepositoryImpl implements FileStoragePort {
   async findAllbyUserId(userId: string): Promise<File[]> {
-    console.log("🚀 ~ file: fileRepositoryImpl.ts:11 ~ fileRepositoryImpl ~ findAllbyUserId ~ userId:", userId)
     const fileRepository = AppDataSource.getRepository(FileEntity);
     const files = await fileRepository.find({
       relations: ['user_id']
     });
       files.map((file) => console.log(file.user_id?.id ?? 'unknown'));
     const filteredFiles = files.filter((file) => file.user_id?.id == userId);
-    console.log("🚀 ~ file: fileRepositoryImpl.ts:17 ~ fileRepositoryImpl ~ findAllbyUserId ~ filteredFiles:", filteredFiles)
     
     return filteredFiles.map((file) => new File(file));
   }
@@ -69,15 +67,20 @@ export class fileRepositoryImpl implements FileStoragePort {
   }
 
   async deleteFile(id: string): Promise<void> {
-    const repository = AppDataSource.getRepository(FileEntity);
-        const file = await repository.findOneBy({ id });
+    logger.info("Eliminando file en Repository");
 
-        if (!file) {
-            logger.error(`FileRepository: Error al eliminar el arichi con ID: ${id}.`);
-            throw new Error('Archivo no encontrado');
-        }
+    // Buscar el usuario por su ID
+    const fileEntity = await AppDataSource.getRepository(FileEntity).findOneBy({
+      id: id
+    });
 
-        await repository.remove(file);
+    if (fileEntity) {
+      // Eliminar el usuario de la base de datos
+      await AppDataSource.getRepository(FileEntity).remove(fileEntity);
+      logger.info("Usuario eliminado correctamente");
+    } else {
+      logger.error("Usuario no encontrado para eliminar");
+    }
   }
 
   async updateFile(id: string, updateData: Partial<File>): Promise<File> {

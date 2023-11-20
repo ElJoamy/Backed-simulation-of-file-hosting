@@ -34,7 +34,7 @@ export class FileEntity implements IFileEntity {
     @JoinColumn({ name: 'user_id' })
     user_id!: UserEntity; //change to userEntity
 
-    @ManyToOne(() => (FileEntity || UserEntity))
+    @ManyToOne(() => (FileEntity || UserEntity), { onDelete: 'CASCADE'})
     @JoinColumn({ name: 'directory_id' })
     directory_id!: FileEntity | UserEntity; //  //change to userEntity || fileEntity
 }

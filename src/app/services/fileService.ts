@@ -32,6 +32,7 @@ export class FileService {
 
     async getFilesbyUserId(userId: string): Promise<FileDto[]> {
         const files = await this.fileStoragePort.findAllbyUserId(userId);
+        console.log("🚀 ~ file: fileService.ts:35 ~ FileService ~ getFilesbyUserId ~ userId:", userId)
 
         const filesResponse: FileDto[] = files.map((file: File) => ({
             id: file.id,
@@ -107,12 +108,12 @@ export class FileService {
     }
 
     async deleteFile(fileId: string): Promise<void> {
-        logger.debug(`FileService: Intentando eliminar al archivo con ID: ${fileId}`);
+        logger.info(`FileService: Intentando eliminar al archivo con ID: ${fileId}`);
         await this.fileStoragePort.deleteFile(fileId);
     }
 
     async updateFile(fileId: string, updateData: Partial<FileDto>): Promise<File> {
-        logger.debug(`FileService: Intentando actualizar al archivo con ID: ${fileId}`);
+        logger.info(`FileService: Intentando actualizar al archivo con ID: ${fileId}`);
         return this.fileStoragePort.updateFile(fileId, updateData);
     }
 
