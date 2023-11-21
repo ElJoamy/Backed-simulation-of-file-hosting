@@ -161,9 +161,6 @@ export class fileRepositoryImpl implements FileStoragePort {
       logger.error("Archivo no compartido");
       throw new Error("Archivo no compartido");
     }
-
-
-
   }  
 
 }
