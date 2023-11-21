@@ -1,4 +1,5 @@
 import { File } from "../models/file";
+import { ShareFile } from "../models/shareFile";
 
 export interface FileStoragePort{
     findAll(): Promise<File[]>;
@@ -8,4 +9,5 @@ export interface FileStoragePort{
     deleteFile(id: string): Promise<void>;
     updateFile(fileId: string, updateData: Partial<File>): Promise<File>;
     findByPath(path: string): Promise<File | null>;
+    shareFile(fileId: string, userId: string, name: string): Promise<ShareFile>;
 }

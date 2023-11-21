@@ -1,6 +1,7 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn, OneToMany } from "typeorm";
 import { IUserEntity } from '../../domain/entities/IUserEntity';
 import { RoleEntity } from "./roleEntity";
+import { SharedFileEntity } from "./sharedFileEntity";
 @Entity()
 export class UserEntity implements IUserEntity {
     @PrimaryGeneratedColumn("uuid")
@@ -24,4 +25,7 @@ export class UserEntity implements IUserEntity {
     @ManyToOne(() => RoleEntity)
     @JoinColumn({ name: 'roleId' })
     role: RoleEntity;
+
+    @OneToMany(() => SharedFileEntity, sharedFile => sharedFile.user)
+    sharedFiles: SharedFileEntity[];
 }

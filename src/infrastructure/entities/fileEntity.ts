@@ -1,6 +1,7 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn, ManyToMany } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn, ManyToMany, OneToMany } from "typeorm";
 import { IFileEntity } from "../../domain/entities/IFileEntity";
 import { UserEntity } from "./userEntity";
+import { SharedFileEntity } from "./sharedFileEntity";
 @Entity()
 export class FileEntity implements IFileEntity {
     @PrimaryGeneratedColumn("uuid")
@@ -37,4 +38,7 @@ export class FileEntity implements IFileEntity {
     @ManyToOne(() => (FileEntity || UserEntity), { onDelete: 'CASCADE', nullable: true})
     @JoinColumn({ name: 'directory_id' })
     directory_id!: FileEntity | null; //  //change to userEntity || fileEntity
+
+    @OneToMany(() => SharedFileEntity, sharedFile => sharedFile.file)
+    sharedFiles: SharedFileEntity[];
 }

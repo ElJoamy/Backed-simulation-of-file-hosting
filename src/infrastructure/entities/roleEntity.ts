@@ -1,5 +1,6 @@
-import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from "typeorm";
 import { IRoleEntity } from "../../domain/entities/IRoleEntity";
+import { SharedFileEntity } from "./sharedFileEntity";
 
 @Entity()
 export class RoleEntity implements IRoleEntity{
@@ -11,4 +12,8 @@ export class RoleEntity implements IRoleEntity{
 
     @Column({ type: 'text' })
     description: string;
+
+    @OneToMany(() => SharedFileEntity, sharedFile => sharedFile.role)
+    sharedFiles: SharedFileEntity[];
+
 }

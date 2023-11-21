@@ -1,10 +1,12 @@
 import { FileStoragePort } from "../../domain/interfaces/fileStoragePort";
 import { File } from "../../domain/models/file";
+import { ShareFile } from "../../domain/models/shareFile";
 import { AppDataSource } from "../config/dataSource";
 import { FileEntity } from "../entities/fileEntity";
+import { RoleEntity } from "../entities/roleEntity";
+import { SharedFileEntity } from "../entities/sharedFileEntity";
 import logger from "../logger/logger";
 import { UserEntity } from './../entities/userEntity';
-
 
 export class fileRepositoryImpl implements FileStoragePort {
   async findAllbyUserId(userId: string): Promise<File[]> {
@@ -47,8 +49,8 @@ export class fileRepositoryImpl implements FileStoragePort {
             created_at: file.created_at || new Date(),
             last_modified: file.created_at || new Date(),
             version: file.version || 1
-        });
-        
+        });      
+
         const fileResponse = await fileRepository.save(fileEntity);
 
         return new File({
@@ -104,4 +106,54 @@ export class fileRepositoryImpl implements FileStoragePort {
         });
         return file ? new File(file) : null;
   }
+
+  async shareFile(fileId: string, userId: string, roleName: string): Promise<ShareFile> {
+    // Buscar la entidad del archivo por su ID
+    const fileEntity = await AppDataSource.getRepository(FileEntity).findOneBy({
+      id: fileId
+    });
+  
+    // Si no se encuentra el archivo, lanzar un error
+    if (!fileEntity) {
+      logger.error("Archivo no encontrado");
+      throw new Error("Archivo no encontrado");
+    }
+  
+    // Buscar la entidad del usuario por su ID
+    const userEntity = await AppDataSource.getRepository(UserEntity).findOneBy({
+      id: userId
+    });
+  
+    // Si no se encuentra el usuario, lanzar un error
+    if (!userEntity) {
+      logger.error("Usuario no encontrado");
+      throw new Error("Usuario no encontrado");
+    }
+  
+    // Buscar la entidad del rol por su nombre
+    const roleEntity = await AppDataSource.getRepository(RoleEntity).findOneBy({
+      name: roleName
+    });
+  
+    // Si no se encuentra el rol, lanzar un error
+    if (!roleEntity) {
+      logger.error("Rol no encontrado");
+      throw new Error("Rol no encontrado");
+    }
+  
+    // Crear la entidad SharedFile
+    const sharedFileEntity = new SharedFileEntity();
+    sharedFileEntity.file = fileEntity;
+    sharedFileEntity.user = userEntity;
+    sharedFileEntity.role = roleEntity;
+  
+    // Guardar la entidad SharedFile en la base de datos
+    await AppDataSource.getRepository(SharedFileEntity).save(sharedFileEntity);
+  
+    logger.info(`Archivo compartido con éxito con el usuario ${userId}`);
+    
+    // Devolver el SharedFile como un objeto de dominio
+    return new ShareFile(sharedFileEntity);
+  }  
+
 }

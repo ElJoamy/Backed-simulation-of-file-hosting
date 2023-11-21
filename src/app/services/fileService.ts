@@ -7,6 +7,7 @@ import { ICacheService } from '../../domain/interfaces/IRedisCache';
 import logger from '../../infrastructure/logger/logger';
 import { User } from './../../domain/models/user';
 import { IFileEntity } from '../../domain/entities/IFileEntity';
+import { ShareFile } from '../../domain/models/shareFile';
 
 
 export class FileService {
@@ -115,5 +116,12 @@ export class FileService {
         logger.info(`FileService: Intentando actualizar al archivo con ID: ${fileId}`);
         return this.fileStoragePort.updateFile(fileId, updateData);
     }
+
+    async shareFile(fileId: string, userId: string, name: string): Promise<ShareFile> {
+        logger.info(`FileService: Intentando compartir el archivo con ID: ${fileId}`);
+        const sharedFile = await this.fileStoragePort.shareFile(fileId, userId, name);
+        return sharedFile;
+    }
+    
 
 }

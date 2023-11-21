@@ -78,6 +78,20 @@ export class FileController {
         }
     };
 
+    public async shareFile(req: Request, res: Response): Promise<Response> {
+        const { id } = req.params;
+        const updateData = req.body;
+        try {
+            logger.debug(`Intentando compartir el archivo con ID: ${id}`);
+            const updatedFile = await this.fileService.shareFile(updateData.fileId, updateData.userId, updateData.name);
+            logger.info(`Archivo con ID: ${id} compartido con éxito`);
+            return res.status(200).json({ file: updatedFile });
+        } catch (error) {
+            logger.error(`Error al compartir el archivo con ID: ${id}. Error: ${error}`);
+            return res.status(500).json({ message: 'Error al compartir el archivo' });
+        }
+    }
+
     public routes() {
         this.router.get('/:id', this.getFileById.bind(this));
         this.router.post('/', this.createFile.bind(this));
@@ -85,5 +99,6 @@ export class FileController {
         this.router.get('/myfiles/:id', this.getFilesByUserId.bind(this));
         this.router.delete('/:id', this.deleteFile.bind(this));
         this.router.put('/:id', this.updateFile.bind(this));
+        this.router.post('/share/:id', this.shareFile.bind(this));
     }
 }
