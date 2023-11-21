@@ -10,4 +10,5 @@ export interface FileStoragePort{
     updateFile(fileId: string, updateData: Partial<File>): Promise<File>;
     findByPath(path: string): Promise<File | null>;
     shareFile(fileId: string, userId: string, name: string): Promise<ShareFile>;
+    mySharedFiles(userId: string): Promise<File[]>;
 }

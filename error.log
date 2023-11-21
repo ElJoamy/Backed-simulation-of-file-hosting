@@ -11,3 +11,9 @@ error: Error al eliminar al archivo con ID: 3914e0bb-114d-4cc0-bef1-d45963b5b1b8
 error: Error al eliminar al archivo con ID: 3914e0bb-114d-4cc0-bef1-d45963b5b1b8. Error: QueryFailedError: ER_ROW_IS_REFERENCED_2: Cannot delete or update a parent row: a foreign key constraint fails (`CertiDrive`.`file_entity`, CONSTRAINT `FK_b84ade665863325d2d350c1e7a0` FOREIGN KEY (`directory_id`) REFERENCES `file_entity` (`id`)) {"timestamp":"20/Nov/2023:14:15:27 -0400"}
 error: Archivo no compartido {"timestamp":"21/Nov/2023:01:16:15 -0400"}
 error: Error al compartir el archivo con ID: e517e285-4725-47d9-8120-fd9820322c95. Error: Error: Archivo no compartido {"timestamp":"21/Nov/2023:01:16:15 -0400"}
+error: Error al obtener los archivos compartidos con el usuario con ID: 0b09f870-c42b-455d-86c3-2f4d0196d764. Error: TypeError: this.fileService.mySharedFiles is not a function {"timestamp":"21/Nov/2023:01:33:49 -0400"}
+error: Error al obtener los archivos compartidos con el usuario con ID: 63975a5d-8260-4c23-8ad6-d7c9717f42b7. Error: TypeError: this.fileService.mySharedFiles is not a function {"timestamp":"21/Nov/2023:01:35:01 -0400"}
+error: Error al obtener los archivos compartidos con el usuario con ID: 63975a5d-8260-4c23-8ad6-d7c9717f42b7. Error: TypeError: this.fileStoragePort.mySharedFiles is not a function {"timestamp":"21/Nov/2023:01:36:56 -0400"}
+error: Error al obtener los archivos compartidos con el usuario con ID: 63975a5d-8260-4c23-8ad6-d7c9717f42b7. Error: TypeError: this.fileStoragePort.mySharedFiles is not a function {"timestamp":"21/Nov/2023:01:37:28 -0400"}
+error: Archivo no encontrado {"timestamp":"21/Nov/2023:01:43:44 -0400"}
+error: Error al compartir el archivo con ID: e517e285-4725-47d9-8120-fd9820322c95. Error: Error: Archivo no encontrado {"timestamp":"21/Nov/2023:01:43:44 -0400"}

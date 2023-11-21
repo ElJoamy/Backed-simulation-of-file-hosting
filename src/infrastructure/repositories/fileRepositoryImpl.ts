@@ -163,4 +163,14 @@ export class fileRepositoryImpl implements FileStoragePort {
     }
   }  
 
+  async mySharedFiles(userId: string): Promise<File[]> {
+    const sharedFiles = await AppDataSource.getRepository(SharedFileEntity).find({
+      where: { user: { id: userId } },
+      relations: ['file']
+    });
+    console.log("🚀 ~ file: fileRepositoryImpl.ts:166 ~ fileRepositoryImpl ~ sharedFiles ~ sharedFiles:", sharedFiles)
+    return sharedFiles.map((sharedFile) => new File(sharedFile.file));
+  }
+  
+
 }

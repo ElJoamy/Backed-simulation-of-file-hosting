@@ -124,5 +124,23 @@ export class FileService {
         return sharedFile;
     }
     
+    async mySharedFiles(userId: string): Promise<FileDto[]> {
+        const files = await this.fileStoragePort.mySharedFiles(userId);
+        console.log("🚀 ~ file: fileService.ts:129 ~ FileService ~ mySharedFiles ~ files:", files)
+        // console.log("🚀 ~ file: fileService.ts:35 ~ FileService ~ getFilesbyUserId ~ userId:", userId)
 
+        const filesResponse: FileDto[] = files.map((file: File) => ({
+            id: file.id,
+            name: file.name,
+            type: file.type,
+            path: file.path,
+            version: file.version,
+            is_directory: file.is_directory,
+            is_shared: file.is_shared,
+            directory_id: file.directory_id,
+            user_id: file.user_id
+        }));
+
+        return filesResponse;
+    }
 }
