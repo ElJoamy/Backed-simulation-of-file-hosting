@@ -48,8 +48,7 @@ export class fileRepositoryImpl implements FileStoragePort {
             last_modified: file.created_at || new Date(),
             version: file.version || 1
         });
-        console.log(fileEntity);
-
+        
         const fileResponse = await fileRepository.save(fileEntity);
 
         return new File({
