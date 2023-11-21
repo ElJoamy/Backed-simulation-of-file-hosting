@@ -3,6 +3,7 @@ import { LoginDTO } from '../../app/dtos/login.dto';
 import { AuthService } from '../../app/services/authService';
 import { log } from 'console';
 import logger from '../../infrastructure/logger/logger';
+import { verifyTokenMiddleware } from '../middleware/verifyToken';
 
 export class AuthController {
     public router: Router;

@@ -22,10 +22,10 @@ export class UserEntity implements IUserEntity {
     @Column({ type: 'timestamp', nullable: true })
     lastLogin!: Date;
 
-    @ManyToOne(() => RoleEntity)
+    @ManyToOne(() => RoleEntity, {onDelete: "CASCADE"})
     @JoinColumn({ name: 'roleId' })
     role: RoleEntity;
 
-    @OneToMany(() => SharedFileEntity, sharedFile => sharedFile.user)
+    @OneToMany(() => SharedFileEntity, sharedFile => sharedFile.user , {onDelete: "CASCADE"})
     sharedFiles: SharedFileEntity[];
 }

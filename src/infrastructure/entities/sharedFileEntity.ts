@@ -14,13 +14,13 @@ import { RoleEntity } from './roleEntity';
     @PrimaryGeneratedColumn()
     id: number;
   
-    @ManyToOne(() => FileEntity, file => file.sharedFiles)
+    @ManyToOne(() => FileEntity, file => file.sharedFiles, {onDelete: "CASCADE"})
     file: FileEntity;
   
-    @ManyToOne(() => UserEntity, user => user.sharedFiles)
+    @ManyToOne(() => UserEntity, user => user.sharedFiles, {onDelete: "CASCADE"})
     user: UserEntity;
   
-    @ManyToOne(() => RoleEntity, role => role.sharedFiles)
+    @ManyToOne(() => RoleEntity, role => role.sharedFiles, {onDelete: "CASCADE"})
     role: RoleEntity;
   }
   

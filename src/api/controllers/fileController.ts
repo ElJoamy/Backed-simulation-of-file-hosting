@@ -2,6 +2,7 @@ import { Request, Response, Router } from 'express';
 import { FileService } from "../../app/services/fileService";
 import { FileDto } from "../../app/dtos/file.dto";
 import logger from "../../infrastructure/logger/logger";
+import { fileValidationRules, validate } from '../middleware/fileValidator';
 
 export class FileController {
     public router: Router;
@@ -109,14 +110,64 @@ export class FileController {
         }
     }
 
+    public async getByIdMySharedFile(req: Request, res: Response): Promise<Response> {
+        const { id, fileId } = req.params;
+        try {
+            logger.debug(`Intentando obtener los archivos compartidos con el usuario con ID: ${id}`);
+            const file = await this.fileService.getByIdMySharedFile(id, fileId);
+            console.log("🚀 ~ file: fileController.ts:117 ~ FileController ~ getByIdMySharedFile ~ file:", file)
+            
+            logger.info(`Archivos compartidos con el usuario con ID: ${id} obtenidos con éxito`);
+            return res.status(200).json({ file });
+        } catch (error) {
+            logger.error(`Error al obtener los archivos compartidos con el usuario con ID: ${id}. Error: ${error}`);
+            return res.status(500).json({ message: 'Error al obtener los archivos compartidos con el usuario' });
+        }
+    }
+
+    public async updateASharedFile(req: Request, res: Response): Promise<Response> {
+        const { id, fileId } = req.params;
+        const updateData = req.body;
+        try {
+            logger.debug(`Intentando obtener los archivos compartidos con el usuario con ID: ${id}`);
+            const file = await this.fileService.updateASharedfile(id, fileId, updateData);
+            console.log("🚀 ~ file: fileController.ts:117 ~ FileController ~ getByIdMySharedFile ~ file:", file)
+            
+            logger.info(`Archivos compartidos con el usuario con ID: ${id} obtenidos con éxito`);
+            return res.status(200).json({ file });
+        } catch (error) {
+            logger.error(`Error al obtener los archivos compartidos con el usuario con ID: ${id}. Error: ${error}`);
+            return res.status(500).json({ message: 'Error al obtener los archivos compartidos con el usuario' });
+        }
+    }
+
+    public async deleteASharedFile(req: Request, res: Response): Promise<Response> {
+        const { id, fileId } = req.params;
+        try {
+            logger.debug(`Intentando obtener los archivos compartidos con el usuario con ID: ${id}`);
+            await this.fileService.deleteASharedfile(id, fileId);
+            
+            logger.info(`Archivos compartidos con el usuario con ID: ${id} obtenidos con éxito`);
+            return res.status(200).json({ message: 'Archivo Eliminado con éxito' });
+        } catch (error) {
+            logger.error(`Error al eliminar al archivo con ID: ${id}. Error: ${error}`);
+            return res.status(500).json({ message: 'Error al eliminar los archivos compartidos con el usuario' });
+        }
+    }
+
     public routes() {
         this.router.get('/:id', this.getFileById.bind(this));
-        this.router.post('/', this.createFile.bind(this));
+        this.router.post('/', fileValidationRules(), validate, this.createFile.bind(this));
         this.router.get('/', this.getFiles.bind(this));
         this.router.get('/myfiles/:id', this.getFilesByUserId.bind(this));
         this.router.delete('/:id', this.deleteFile.bind(this));
         this.router.put('/:id', this.updateFile.bind(this));
+
         this.router.post('/share/:id', this.shareFile.bind(this));
         this.router.get('/mySharedFiles/:id', this.mySharedFiles.bind(this));
+        this.router.get('/mySharedFiles/:id/:fileId', this.getByIdMySharedFile.bind(this));
+        this.router.put('/mySharedFiles/:id/:fileId', this.updateASharedFile.bind(this));
+        this.router.delete('/mySharedFiles/:id/:fileId', this.deleteASharedFile.bind(this));
+
     }
 }

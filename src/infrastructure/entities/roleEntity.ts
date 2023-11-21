@@ -13,7 +13,7 @@ export class RoleEntity implements IRoleEntity{
     @Column({ type: 'text' })
     description: string;
 
-    @OneToMany(() => SharedFileEntity, sharedFile => sharedFile.role)
+    @OneToMany(() => SharedFileEntity, sharedFile => sharedFile.role, {onDelete: "CASCADE"})
     sharedFiles: SharedFileEntity[];
 
 }

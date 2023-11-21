@@ -384,3 +384,120 @@ info: ::1 - - [21/Nov/2023:05:45:41 +0000] "POST /api/files/share/e517e285-4725-
 debug: Intentando obtener los archivos compartidos con el usuario con ID: eff48890-3b08-46b9-ba0e-3542b07a2d90 {"timestamp":"21/Nov/2023:01:45:51 -0400"}
 info: Archivos compartidos con el usuario con ID: eff48890-3b08-46b9-ba0e-3542b07a2d90 obtenidos con éxito {"timestamp":"21/Nov/2023:01:45:51 -0400"}
 info: ::1 - - [21/Nov/2023:05:45:51 +0000] "GET /api/files/mySharedFiles/eff48890-3b08-46b9-ba0e-3542b07a2d90 HTTP/1.1" 200 155 "-" "PostmanRuntime/7.35.0" {"timestamp":"21/Nov/2023:01:45:51 -0400"}
+info: ::1 - - [21/Nov/2023:06:18:15 +0000] "GET /api/files/share/1 HTTP/1.1" 404 156 "-" "PostmanRuntime/7.35.0" {"timestamp":"21/Nov/2023:02:18:15 -0400"}
+info: Archivos compartidos con el usuario con ID: 1 obtenidos con éxito {"timestamp":"21/Nov/2023:02:18:44 -0400"}
+info: ::1 - - [21/Nov/2023:06:18:44 +0000] "GET /api/files/mySharedFiles/1 HTTP/1.1" 200 971 "-" "PostmanRuntime/7.35.0" {"timestamp":"21/Nov/2023:02:18:44 -0400"}
+info: Alguna información relevante {"timestamp":"21/Nov/2023:02:20:46 -0400"}
+info: Find File by id {"timestamp":"21/Nov/2023:02:20:46 -0400"}
+info: ::1 - - [21/Nov/2023:06:20:46 +0000] "POST /api/files/ HTTP/1.1" 201 558 "-" "PostmanRuntime/7.35.0" {"timestamp":"21/Nov/2023:02:20:46 -0400"}
+info: FileService: Intentando compartir el archivo con ID: df22dbb0-c415-4d2c-b09b-74bf6904f98e {"timestamp":"21/Nov/2023:02:21:05 -0400"}
+info: Archivo compartido con éxito con el usuario 1a939e65-a257-45ca-9e9e-22d32d599e1e {"timestamp":"21/Nov/2023:02:21:05 -0400"}
+info: Archivo con ID: 1 compartido con éxito {"timestamp":"21/Nov/2023:02:21:05 -0400"}
+info: ::1 - - [21/Nov/2023:06:21:05 +0000] "POST /api/files/share/1 HTTP/1.1" 200 612 "-" "PostmanRuntime/7.35.0" {"timestamp":"21/Nov/2023:02:21:05 -0400"}
+info: Archivos compartidos con el usuario con ID: 1a939e65-a257-45ca-9e9e-22d32d599e1e obtenidos con éxito {"timestamp":"21/Nov/2023:02:22:58 -0400"}
+info: ::1 - - [21/Nov/2023:06:22:58 +0000] "GET /api/files/mySharedFiles/1a939e65-a257-45ca-9e9e-22d32d599e1e/df22dbb0-c415-4d2c-b09b-74bf6904f98e HTTP/1.1" 200 155 "-" "PostmanRuntime/7.35.0" {"timestamp":"21/Nov/2023:02:22:58 -0400"}
+info: Archivos compartidos con el usuario con ID: 1a939e65-a257-45ca-9e9e-22d32d599e1e obtenidos con éxito {"timestamp":"21/Nov/2023:02:39:18 -0400"}
+info: ::1 - - [21/Nov/2023:06:39:18 +0000] "GET /api/files/mySharedFiles/1a939e65-a257-45ca-9e9e-22d32d599e1e/df22dbb0-c415-4d2c-b09b-74bf6904f98e HTTP/1.1" 200 155 "-" "PostmanRuntime/7.35.0" {"timestamp":"21/Nov/2023:02:39:18 -0400"}
+info: FileService: Intentando que el usuario de id=1a939e65-a257-45ca-9e9e-22d32d599e1e pueda actualizar al archivo compartido con ID: df22dbb0-c415-4d2c-b09b-74bf6904f98e {"timestamp":"21/Nov/2023:02:39:41 -0400"}
+error: Error al obtener los archivos compartidos con el usuario con ID: 1a939e65-a257-45ca-9e9e-22d32d599e1e. Error: TypeError: Cannot read properties of undefined (reading 'name') {"timestamp":"21/Nov/2023:02:39:42 -0400"}
+info: ::1 - - [21/Nov/2023:06:39:42 +0000] "PUT /api/files/mySharedFiles/1a939e65-a257-45ca-9e9e-22d32d599e1e/df22dbb0-c415-4d2c-b09b-74bf6904f98e HTTP/1.1" 500 70 "-" "PostmanRuntime/7.35.0" {"timestamp":"21/Nov/2023:02:39:42 -0400"}
+info: Archivos compartidos con el usuario con ID: 1a939e65-a257-45ca-9e9e-22d32d599e1e obtenidos con éxito {"timestamp":"21/Nov/2023:02:39:52 -0400"}
+info: ::1 - - [21/Nov/2023:06:39:52 +0000] "GET /api/files/mySharedFiles/1a939e65-a257-45ca-9e9e-22d32d599e1e/df22dbb0-c415-4d2c-b09b-74bf6904f98e HTTP/1.1" 200 155 "-" "PostmanRuntime/7.35.0" {"timestamp":"21/Nov/2023:02:39:52 -0400"}
+info: Archivos compartidos con el usuario con ID: 1a939e65-a257-45ca-9e9e-22d32d599e1e obtenidos con éxito {"timestamp":"21/Nov/2023:02:42:22 -0400"}
+info: ::1 - - [21/Nov/2023:06:42:22 +0000] "GET /api/files/mySharedFiles/1a939e65-a257-45ca-9e9e-22d32d599e1e HTTP/1.1" 200 448 "-" "PostmanRuntime/7.35.0" {"timestamp":"21/Nov/2023:02:42:22 -0400"}
+info: Alguna información relevante {"timestamp":"21/Nov/2023:02:43:58 -0400"}
+info: Find File by id {"timestamp":"21/Nov/2023:02:43:58 -0400"}
+info: ::1 - - [21/Nov/2023:06:43:58 +0000] "POST /api/files/ HTTP/1.1" 201 558 "-" "PostmanRuntime/7.35.0" {"timestamp":"21/Nov/2023:02:43:58 -0400"}
+info: FileService: Intentando compartir el archivo con ID: b22877a6-0d29-45ab-8e7a-ee6ccbabd3ff {"timestamp":"21/Nov/2023:02:44:50 -0400"}
+info: Archivo compartido con éxito con el usuario 1a939e65-a257-45ca-9e9e-22d32d599e1e {"timestamp":"21/Nov/2023:02:44:50 -0400"}
+info: Archivo con ID: 1 compartido con éxito {"timestamp":"21/Nov/2023:02:44:50 -0400"}
+info: ::1 - - [21/Nov/2023:06:44:50 +0000] "POST /api/files/share/1 HTTP/1.1" 200 609 "-" "PostmanRuntime/7.35.0" {"timestamp":"21/Nov/2023:02:44:50 -0400"}
+info: FileService: Intentando que el usuario de id=1a939e65-a257-45ca-9e9e-22d32d599e1e pueda actualizar al archivo compartido con ID: b22877a6-0d29-45ab-8e7a-ee6ccbabd3ff {"timestamp":"21/Nov/2023:02:45:26 -0400"}
+error: Error al obtener los archivos compartidos con el usuario con ID: 1a939e65-a257-45ca-9e9e-22d32d599e1e. Error: TypeError: Cannot read properties of undefined (reading 'name') {"timestamp":"21/Nov/2023:02:45:26 -0400"}
+info: ::1 - - [21/Nov/2023:06:45:26 +0000] "PUT /api/files/mySharedFiles/1a939e65-a257-45ca-9e9e-22d32d599e1e/b22877a6-0d29-45ab-8e7a-ee6ccbabd3ff HTTP/1.1" 500 70 "-" "PostmanRuntime/7.35.0" {"timestamp":"21/Nov/2023:02:45:26 -0400"}
+info: FileService: Intentando que el usuario de id=1a939e65-a257-45ca-9e9e-22d32d599e1e pueda actualizar al archivo compartido con ID: b22877a6-0d29-45ab-8e7a-ee6ccbabd3ff {"timestamp":"21/Nov/2023:02:48:39 -0400"}
+error: Error al obtener los archivos compartidos con el usuario con ID: 1a939e65-a257-45ca-9e9e-22d32d599e1e. Error: TypeError: Cannot read properties of undefined (reading 'name') {"timestamp":"21/Nov/2023:02:48:39 -0400"}
+info: ::1 - - [21/Nov/2023:06:48:39 +0000] "PUT /api/files/mySharedFiles/1a939e65-a257-45ca-9e9e-22d32d599e1e/b22877a6-0d29-45ab-8e7a-ee6ccbabd3ff HTTP/1.1" 500 70 "-" "PostmanRuntime/7.35.0" {"timestamp":"21/Nov/2023:02:48:39 -0400"}
+info: FileService: Intentando que el usuario de id=1a939e65-a257-45ca-9e9e-22d32d599e1e pueda actualizar al archivo compartido con ID: b22877a6-0d29-45ab-8e7a-ee6ccbabd3ff {"timestamp":"21/Nov/2023:02:52:47 -0400"}
+error: Error al obtener los archivos compartidos con el usuario con ID: 1a939e65-a257-45ca-9e9e-22d32d599e1e. Error: TypeError: Cannot read properties of undefined (reading 'name') {"timestamp":"21/Nov/2023:02:52:47 -0400"}
+info: ::1 - - [21/Nov/2023:06:52:47 +0000] "PUT /api/files/mySharedFiles/1a939e65-a257-45ca-9e9e-22d32d599e1e/b22877a6-0d29-45ab-8e7a-ee6ccbabd3ff HTTP/1.1" 500 70 "-" "PostmanRuntime/7.35.0" {"timestamp":"21/Nov/2023:02:52:47 -0400"}
+info: FileService: Intentando que el usuario de id=1a939e65-a257-45ca-9e9e-22d32d599e1e pueda actualizar al archivo compartido con ID: b22877a6-0d29-45ab-8e7a-ee6ccbabd3ff {"timestamp":"21/Nov/2023:02:53:33 -0400"}
+info: Archivos compartidos con el usuario con ID: 1a939e65-a257-45ca-9e9e-22d32d599e1e obtenidos con éxito {"timestamp":"21/Nov/2023:02:53:33 -0400"}
+info: ::1 - - [21/Nov/2023:06:53:33 +0000] "PUT /api/files/mySharedFiles/1a939e65-a257-45ca-9e9e-22d32d599e1e/b22877a6-0d29-45ab-8e7a-ee6ccbabd3ff HTTP/1.1" 200 238 "-" "PostmanRuntime/7.35.0" {"timestamp":"21/Nov/2023:02:53:33 -0400"}
+info: FileService: Intentando que el usuario de id=1a939e65-a257-45ca-9e9e-22d32d599e1e pueda actualizar al archivo compartido con ID: b22877a6-0d29-45ab-8e7a-ee6ccbabd3ff {"timestamp":"21/Nov/2023:02:56:52 -0400"}
+info: Archivos compartidos con el usuario con ID: 1a939e65-a257-45ca-9e9e-22d32d599e1e obtenidos con éxito {"timestamp":"21/Nov/2023:02:56:52 -0400"}
+info: ::1 - - [21/Nov/2023:06:56:52 +0000] "PUT /api/files/mySharedFiles/1a939e65-a257-45ca-9e9e-22d32d599e1e/b22877a6-0d29-45ab-8e7a-ee6ccbabd3ff HTTP/1.1" 200 239 "-" "PostmanRuntime/7.35.0" {"timestamp":"21/Nov/2023:02:56:52 -0400"}
+info: FileService: Intentando que el usuario de id=1a939e65-a257-45ca-9e9e-22d32d599e1e pueda actualizar al archivo compartido con ID: b22877a6-0d29-45ab-8e7a-ee6ccbabd3ff {"timestamp":"21/Nov/2023:02:58:18 -0400"}
+error: Error al obtener los archivos compartidos con el usuario con ID: 1a939e65-a257-45ca-9e9e-22d32d599e1e. Error: TypeError: Cannot read properties of undefined (reading 'name') {"timestamp":"21/Nov/2023:02:58:18 -0400"}
+info: ::1 - - [21/Nov/2023:06:58:18 +0000] "PUT /api/files/mySharedFiles/1a939e65-a257-45ca-9e9e-22d32d599e1e/b22877a6-0d29-45ab-8e7a-ee6ccbabd3ff HTTP/1.1" 500 70 "-" "PostmanRuntime/7.35.0" {"timestamp":"21/Nov/2023:02:58:18 -0400"}
+info: FileService: Intentando que el usuario de id=1a939e65-a257-45ca-9e9e-22d32d599e1e pueda actualizar al archivo compartido con ID: b22877a6-0d29-45ab-8e7a-ee6ccbabd3ff {"timestamp":"21/Nov/2023:02:59:56 -0400"}
+info: Archivos compartidos con el usuario con ID: 1a939e65-a257-45ca-9e9e-22d32d599e1e obtenidos con éxito {"timestamp":"21/Nov/2023:02:59:57 -0400"}
+info: ::1 - - [21/Nov/2023:06:59:57 +0000] "PUT /api/files/mySharedFiles/1a939e65-a257-45ca-9e9e-22d32d599e1e/b22877a6-0d29-45ab-8e7a-ee6ccbabd3ff HTTP/1.1" 200 249 "-" "PostmanRuntime/7.35.0" {"timestamp":"21/Nov/2023:02:59:57 -0400"}
+info: ::1 - - [21/Nov/2023:07:02:13 +0000] "POST /api/users HTTP/1.1" 201 345 "-" "PostmanRuntime/7.35.0" {"timestamp":"21/Nov/2023:03:02:13 -0400"}
+info: Alguna información relevante {"timestamp":"21/Nov/2023:03:02:40 -0400"}
+info: Find File by id {"timestamp":"21/Nov/2023:03:02:40 -0400"}
+info: ::1 - - [21/Nov/2023:07:02:40 +0000] "POST /api/files/ HTTP/1.1" 201 558 "-" "PostmanRuntime/7.35.0" {"timestamp":"21/Nov/2023:03:02:40 -0400"}
+info: FileService: Intentando compartir el archivo con ID: e06b63e1-1d14-402f-8960-5040b93f919e {"timestamp":"21/Nov/2023:03:03:22 -0400"}
+info: Archivo compartido con éxito con el usuario 1602518c-c96c-4b6f-8a1b-50db24085ebd {"timestamp":"21/Nov/2023:03:03:22 -0400"}
+info: Archivo con ID: 1 compartido con éxito {"timestamp":"21/Nov/2023:03:03:22 -0400"}
+info: ::1 - - [21/Nov/2023:07:03:22 +0000] "POST /api/files/share/1 HTTP/1.1" 200 623 "-" "PostmanRuntime/7.35.0" {"timestamp":"21/Nov/2023:03:03:22 -0400"}
+info: FileService: Intentando que el usuario de id=1602518c-c96c-4b6f-8a1b-50db24085ebd pueda actualizar al archivo compartido con ID: e06b63e1-1d14-402f-8960-5040b93f919e {"timestamp":"21/Nov/2023:03:04:15 -0400"}
+error: No puede actualizar este archivo {"timestamp":"21/Nov/2023:03:04:15 -0400"}
+error: Error al obtener los archivos compartidos con el usuario con ID: 1602518c-c96c-4b6f-8a1b-50db24085ebd. Error: Error: No tiene permiso de modificar este archivo {"timestamp":"21/Nov/2023:03:04:15 -0400"}
+info: ::1 - - [21/Nov/2023:07:04:15 +0000] "PUT /api/files/mySharedFiles/1602518c-c96c-4b6f-8a1b-50db24085ebd/e06b63e1-1d14-402f-8960-5040b93f919e HTTP/1.1" 500 70 "-" "PostmanRuntime/7.35.0" {"timestamp":"21/Nov/2023:03:04:15 -0400"}
+info: FileService: Intentando que el usuario de id=1602518c-c96c-4b6f-8a1b-50db24085ebd pueda actualizar al archivo compartido con ID: e06b63e1-1d14-402f-8960-5040b93f919e {"timestamp":"21/Nov/2023:03:05:42 -0400"}
+error: No puede actualizar este archivo {"timestamp":"21/Nov/2023:03:05:42 -0400"}
+error: Error al obtener los archivos compartidos con el usuario con ID: 1602518c-c96c-4b6f-8a1b-50db24085ebd. Error: Error: No tiene permiso de modificar este archivo {"timestamp":"21/Nov/2023:03:05:42 -0400"}
+info: ::1 - - [21/Nov/2023:07:05:42 +0000] "PUT /api/files/mySharedFiles/1602518c-c96c-4b6f-8a1b-50db24085ebd/e06b63e1-1d14-402f-8960-5040b93f919e HTTP/1.1" 500 70 "-" "PostmanRuntime/7.35.0" {"timestamp":"21/Nov/2023:03:05:42 -0400"}
+info: FileService: Intentando que el usuario de id=1602518c-c96c-4b6f-8a1b-50db24085ebd pueda actualizar al archivo compartido con ID: e06b63e1-1d14-402f-8960-5040b93f919e {"timestamp":"21/Nov/2023:03:06:46 -0400"}
+error: No puede actualizar este archivo {"timestamp":"21/Nov/2023:03:06:46 -0400"}
+error: Error al obtener los archivos compartidos con el usuario con ID: 1602518c-c96c-4b6f-8a1b-50db24085ebd. Error: Error: No tiene permiso de modificar este archivo {"timestamp":"21/Nov/2023:03:06:46 -0400"}
+info: ::1 - - [21/Nov/2023:07:06:46 +0000] "PUT /api/files/mySharedFiles/1602518c-c96c-4b6f-8a1b-50db24085ebd/e06b63e1-1d14-402f-8960-5040b93f919e HTTP/1.1" 500 70 "-" "PostmanRuntime/7.35.0" {"timestamp":"21/Nov/2023:03:06:46 -0400"}
+info: FileService: Intentando que el usuario de id=1a939e65-a257-45ca-9e9e-22d32d599e1e pueda actualizar al archivo compartido con ID: b22877a6-0d29-45ab-8e7a-ee6ccbabd3ff {"timestamp":"21/Nov/2023:03:08:03 -0400"}
+info: Archivos compartidos con el usuario con ID: 1a939e65-a257-45ca-9e9e-22d32d599e1e obtenidos con éxito {"timestamp":"21/Nov/2023:03:08:03 -0400"}
+info: ::1 - - [21/Nov/2023:07:08:03 +0000] "PUT /api/files/mySharedFiles/1a939e65-a257-45ca-9e9e-22d32d599e1e/b22877a6-0d29-45ab-8e7a-ee6ccbabd3ff HTTP/1.1" 200 249 "-" "PostmanRuntime/7.35.0" {"timestamp":"21/Nov/2023:03:08:03 -0400"}
+info: FileService: Intentando que el usuario de id=1a939e65-a257-45ca-9e9e-22d32d599e1e pueda eliminar al archivo compartido con ID: b22877a6-0d29-45ab-8e7a-ee6ccbabd3ff {"timestamp":"21/Nov/2023:03:26:53 -0400"}
+info: Eliminando file en Repository {"timestamp":"21/Nov/2023:03:26:53 -0400"}
+error: Error al eliminar al archivo con ID: 1a939e65-a257-45ca-9e9e-22d32d599e1e. Error: QueryFailedError: ER_ROW_IS_REFERENCED_2: Cannot delete or update a parent row: a foreign key constraint fails (`CertiDrive`.`shared_file_entity`, CONSTRAINT `FK_84ca0e3a20b33077609c020107a` FOREIGN KEY (`fileId`) REFERENCES `file_entity` (`id`)) {"timestamp":"21/Nov/2023:03:26:54 -0400"}
+info: ::1 - - [21/Nov/2023:07:26:54 +0000] "DELETE /api/files/mySharedFiles/1a939e65-a257-45ca-9e9e-22d32d599e1e/b22877a6-0d29-45ab-8e7a-ee6ccbabd3ff HTTP/1.1" 500 71 "-" "PostmanRuntime/7.35.0" {"timestamp":"21/Nov/2023:03:26:54 -0400"}
+info: FileService: Intentando que el usuario de id=1a939e65-a257-45ca-9e9e-22d32d599e1e pueda actualizar al archivo compartido con ID: b22877a6-0d29-45ab-8e7a-ee6ccbabd3ff {"timestamp":"21/Nov/2023:03:27:05 -0400"}
+info: Archivos compartidos con el usuario con ID: 1a939e65-a257-45ca-9e9e-22d32d599e1e obtenidos con éxito {"timestamp":"21/Nov/2023:03:27:05 -0400"}
+info: ::1 - - [21/Nov/2023:07:27:05 +0000] "PUT /api/files/mySharedFiles/1a939e65-a257-45ca-9e9e-22d32d599e1e/b22877a6-0d29-45ab-8e7a-ee6ccbabd3ff HTTP/1.1" 200 252 "-" "PostmanRuntime/7.35.0" {"timestamp":"21/Nov/2023:03:27:05 -0400"}
+info: FileService: Intentando que el usuario de id=1a939e65-a257-45ca-9e9e-22d32d599e1e pueda actualizar al archivo compartido con ID: b22877a6-0d29-45ab-8e7a-ee6ccbabd3ff {"timestamp":"21/Nov/2023:03:30:04 -0400"}
+info: Archivos compartidos con el usuario con ID: 1a939e65-a257-45ca-9e9e-22d32d599e1e obtenidos con éxito {"timestamp":"21/Nov/2023:03:30:05 -0400"}
+info: ::1 - - [21/Nov/2023:07:30:05 +0000] "PUT /api/files/mySharedFiles/1a939e65-a257-45ca-9e9e-22d32d599e1e/b22877a6-0d29-45ab-8e7a-ee6ccbabd3ff HTTP/1.1" 200 252 "-" "PostmanRuntime/7.35.0" {"timestamp":"21/Nov/2023:03:30:05 -0400"}
+info: FileService: Intentando que el usuario de id=1a939e65-a257-45ca-9e9e-22d32d599e1e pueda eliminar al archivo compartido con ID: b22877a6-0d29-45ab-8e7a-ee6ccbabd3ff {"timestamp":"21/Nov/2023:03:30:13 -0400"}
+info: Eliminando file en Repository {"timestamp":"21/Nov/2023:03:30:13 -0400"}
+error: Error al eliminar al archivo con ID: 1a939e65-a257-45ca-9e9e-22d32d599e1e. Error: QueryFailedError: ER_ROW_IS_REFERENCED_2: Cannot delete or update a parent row: a foreign key constraint fails (`CertiDrive`.`shared_file_entity`, CONSTRAINT `FK_84ca0e3a20b33077609c020107a` FOREIGN KEY (`fileId`) REFERENCES `file_entity` (`id`)) {"timestamp":"21/Nov/2023:03:30:13 -0400"}
+info: ::1 - - [21/Nov/2023:07:30:13 +0000] "DELETE /api/files/mySharedFiles/1a939e65-a257-45ca-9e9e-22d32d599e1e/b22877a6-0d29-45ab-8e7a-ee6ccbabd3ff HTTP/1.1" 500 71 "-" "PostmanRuntime/7.35.0" {"timestamp":"21/Nov/2023:03:30:13 -0400"}
+info: FileService: Intentando que el usuario de id=1a939e65-a257-45ca-9e9e-22d32d599e1e pueda eliminar al archivo compartido con ID: b22877a6-0d29-45ab-8e7a-ee6ccbabd3ff {"timestamp":"21/Nov/2023:03:34:37 -0400"}
+info: Eliminando file en Repository {"timestamp":"21/Nov/2023:03:34:37 -0400"}
+info: Archivos compartidos con el usuario con ID: 1a939e65-a257-45ca-9e9e-22d32d599e1e obtenidos con éxito {"timestamp":"21/Nov/2023:03:34:38 -0400"}
+info: ::1 - - [21/Nov/2023:07:34:38 +0000] "DELETE /api/files/mySharedFiles/1a939e65-a257-45ca-9e9e-22d32d599e1e/b22877a6-0d29-45ab-8e7a-ee6ccbabd3ff HTTP/1.1" 200 42 "-" "PostmanRuntime/7.35.0" {"timestamp":"21/Nov/2023:03:34:38 -0400"}
+info: ::1 - - [21/Nov/2023:07:40:56 +0000] "GET /api/files/ HTTP/1.1" 200 1510 "-" "PostmanRuntime/7.35.0" {"timestamp":"21/Nov/2023:03:40:56 -0400"}
+info: ::1 - - [21/Nov/2023:07:40:58 +0000] "GET /api/files/ HTTP/1.1" 200 1510 "-" "PostmanRuntime/7.35.0" {"timestamp":"21/Nov/2023:03:40:58 -0400"}
+info: ::1 - - [21/Nov/2023:07:41:00 +0000] "GET /api/files/ HTTP/1.1" 200 1510 "-" "PostmanRuntime/7.35.0" {"timestamp":"21/Nov/2023:03:41:00 -0400"}
+info: ::1 - - [21/Nov/2023:07:41:01 +0000] "GET /api/files/ HTTP/1.1" 200 1510 "-" "PostmanRuntime/7.35.0" {"timestamp":"21/Nov/2023:03:41:01 -0400"}
+info: ::1 - - [21/Nov/2023:07:41:03 +0000] "GET /api/files/ HTTP/1.1" 200 1510 "-" "PostmanRuntime/7.35.0" {"timestamp":"21/Nov/2023:03:41:03 -0400"}
+info: ::1 - - [21/Nov/2023:07:41:05 +0000] "GET /api/files/ HTTP/1.1" 200 1510 "-" "PostmanRuntime/7.35.0" {"timestamp":"21/Nov/2023:03:41:05 -0400"}
+info: ::1 - - [21/Nov/2023:07:41:07 +0000] "GET /api/files/ HTTP/1.1" 200 1510 "-" "PostmanRuntime/7.35.0" {"timestamp":"21/Nov/2023:03:41:07 -0400"}
+info: ::1 - - [21/Nov/2023:07:41:09 +0000] "GET /api/files/ HTTP/1.1" 200 1510 "-" "PostmanRuntime/7.35.0" {"timestamp":"21/Nov/2023:03:41:09 -0400"}
+info: ::1 - - [21/Nov/2023:07:41:11 +0000] "GET /api/files/ HTTP/1.1" 200 1510 "-" "PostmanRuntime/7.35.0" {"timestamp":"21/Nov/2023:03:41:11 -0400"}
+info: ::1 - - [21/Nov/2023:07:41:12 +0000] "GET /api/files/ HTTP/1.1" 200 1510 "-" "PostmanRuntime/7.35.0" {"timestamp":"21/Nov/2023:03:41:12 -0400"}
+info: ::1 - - [21/Nov/2023:07:57:59 +0000] "POST /api/users HTTP/1.1" - - "-" "PostmanRuntime/7.35.0" {"timestamp":"21/Nov/2023:03:57:59 -0400"}
+info: ::1 - - [21/Nov/2023:07:59:59 +0000] "POST /api/users HTTP/1.1" - - "-" "PostmanRuntime/7.35.0" {"timestamp":"21/Nov/2023:03:59:59 -0400"}
+info: ::1 - - [21/Nov/2023:08:01:07 +0000] "GET /api/users/1 HTTP/1.1" 401 36 "-" "PostmanRuntime/7.35.0" {"timestamp":"21/Nov/2023:04:01:07 -0400"}
+info: ::1 - - [21/Nov/2023:08:04:36 +0000] "POST /api/users HTTP/1.1" - - "-" "PostmanRuntime/7.35.0" {"timestamp":"21/Nov/2023:04:04:36 -0400"}
+info: ::1 - - [21/Nov/2023:08:07:17 +0000] "POST /api/users HTTP/1.1" 201 354 "-" "PostmanRuntime/7.35.0" {"timestamp":"21/Nov/2023:04:07:17 -0400"}
+info: ::1 - - [21/Nov/2023:08:08:14 +0000] "POST /api/users HTTP/1.1" 201 357 "-" "PostmanRuntime/7.35.0" {"timestamp":"21/Nov/2023:04:08:14 -0400"}
+info: ::1 - - [21/Nov/2023:08:09:43 +0000] "POST /api/users HTTP/1.1" 400 129 "-" "PostmanRuntime/7.35.0" {"timestamp":"21/Nov/2023:04:09:43 -0400"}
+info: ::1 - - [21/Nov/2023:08:09:51 +0000] "POST /api/users HTTP/1.1" 201 358 "-" "PostmanRuntime/7.35.0" {"timestamp":"21/Nov/2023:04:09:51 -0400"}
+info: ::1 - - [21/Nov/2023:08:10:17 +0000] "POST /api/users HTTP/1.1" 201 357 "-" "PostmanRuntime/7.35.0" {"timestamp":"21/Nov/2023:04:10:17 -0400"}
+info: ::1 - - [21/Nov/2023:08:13:50 +0000] "POST /api/users HTTP/1.1" 400 250 "-" "PostmanRuntime/7.35.0" {"timestamp":"21/Nov/2023:04:13:50 -0400"}
+info: ::1 - - [21/Nov/2023:08:18:31 +0000] "POST /api/files/ HTTP/1.1" - - "-" "PostmanRuntime/7.35.0" {"timestamp":"21/Nov/2023:04:18:31 -0400"}
+info: ::1 - - [21/Nov/2023:08:20:48 +0000] "POST /api/files/ HTTP/1.1" 400 104 "-" "PostmanRuntime/7.35.0" {"timestamp":"21/Nov/2023:04:20:48 -0400"}
+info: ::1 - - [21/Nov/2023:08:21:04 +0000] "POST /api/files/ HTTP/1.1" 400 104 "-" "PostmanRuntime/7.35.0" {"timestamp":"21/Nov/2023:04:21:04 -0400"}
+error: Error al eliminar al usuario con ID: 1. Error: QueryFailedError: ER_ROW_IS_REFERENCED_2: Cannot delete or update a parent row: a foreign key constraint fails (`CertiDrive`.`file_entity`, CONSTRAINT `FK_7c2f119d73cd731ecd372ff4537` FOREIGN KEY (`user_id`) REFERENCES `user_entity` (`id`)) {"timestamp":"21/Nov/2023:04:22:34 -0400"}
+info: ::1 - - [21/Nov/2023:08:22:34 +0000] "DELETE /api/users/1 HTTP/1.1" 500 777 "-" "PostmanRuntime/7.35.0" {"timestamp":"21/Nov/2023:04:22:34 -0400"}
+info: Usuario con ID: 1 eliminado con éxito {"timestamp":"21/Nov/2023:04:24:36 -0400"}
+info: ::1 - - [21/Nov/2023:08:24:36 +0000] "DELETE /api/users/1 HTTP/1.1" 200 42 "-" "PostmanRuntime/7.35.0" {"timestamp":"21/Nov/2023:04:24:36 -0400"}

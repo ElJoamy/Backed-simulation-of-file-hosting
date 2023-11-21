@@ -14,6 +14,7 @@ import { AuthController } from './api/controllers/authController';
 import { AuthService } from './app/services/authService';
 import { EncryptImpl } from './infrastructure/utils/encrypt.jwt';
 import { routes } from './api/controllers/apiRoutes';
+import { limiter } from './api/middleware/rate.limiter';
 
 AppDataSource.initialize().then(() => {
     const app = express();
@@ -22,7 +23,7 @@ AppDataSource.initialize().then(() => {
     const PORT = env.port;
 
     app.use(express.json());
-
+    app.use(limiter)
     // Setup Logger 
     app.use(morgan('combined', { stream: { write: (message: string) => logger.info(message.trim()) } }));
 

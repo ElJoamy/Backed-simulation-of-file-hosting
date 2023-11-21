@@ -31,14 +31,14 @@ export class FileEntity implements IFileEntity {
     @Column({ type: 'varchar' })
     type!: string;
 
-    @ManyToOne(() => UserEntity)
+    @ManyToOne(() => UserEntity,  {onDelete: "CASCADE"})
     @JoinColumn({ name: 'user_id' })
     user_id!: UserEntity; //change to userEntity
 
-    @ManyToOne(() => (FileEntity || UserEntity), { onDelete: 'CASCADE', nullable: true})
+    @ManyToOne(() => (FileEntity), { onDelete: 'CASCADE', nullable: true})
     @JoinColumn({ name: 'directory_id' })
     directory_id!: FileEntity | null; //  //change to userEntity || fileEntity
 
-    @OneToMany(() => SharedFileEntity, sharedFile => sharedFile.file)
+    @OneToMany(() => SharedFileEntity, sharedFile => sharedFile.file, {onDelete: "CASCADE"})
     sharedFiles: SharedFileEntity[];
 }

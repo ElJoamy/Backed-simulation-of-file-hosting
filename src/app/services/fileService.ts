@@ -11,6 +11,8 @@ import { ShareFile } from '../../domain/models/shareFile';
 
 
 export class FileService {
+    
+    
     constructor(private fileStoragePort: FileStoragePort, private userRepository: UserRepository, private redisCacheService: ICacheService){}
 
     async getFiles(): Promise<FileDto[]> {
@@ -142,5 +144,38 @@ export class FileService {
         }));
 
         return filesResponse;
+    }
+
+    async getByIdMySharedFile(id: string, fileId: string): Promise<FileDto | null>{
+        const fileDB = await this.fileStoragePort.findSharedById(id, fileId);
+
+        if (!fileDB) {
+            return null;
+        }
+
+        const fileResponse: FileDto = {
+            id: fileDB.id,
+            name: fileDB.name,
+            type: fileDB.type,
+            path: fileDB.path,
+            version: fileDB.version,
+            is_directory: fileDB.is_directory,
+            is_shared: fileDB.is_shared,
+            directory_id: fileDB.directory_id,
+            user_id: fileDB.user_id
+        };
+
+        return fileResponse;
+
+    }
+
+    async updateASharedfile(id: string, fileId: string, updateData: Partial<FileDto>): Promise<File> {
+        logger.info(`FileService: Intentando que el usuario de id=${id} pueda actualizar al archivo compartido con ID: ${fileId}`);
+        return this.fileStoragePort.updateSharedFile(id, fileId, updateData);
+    }
+
+    async deleteASharedfile(id: string, fileId: string): Promise<void> {
+        logger.info(`FileService: Intentando que el usuario de id=${id} pueda eliminar al archivo compartido con ID: ${fileId}`);
+        await this.fileStoragePort.deleteSharedFile(id, fileId);
     }
 }

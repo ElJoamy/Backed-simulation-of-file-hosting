@@ -10,6 +10,8 @@ import logger from "../logger/logger";
 import { UserEntity } from './../entities/userEntity';
 
 export class fileRepositoryImpl implements FileStoragePort {
+  
+  
   async findAllbyUserId(userId: string): Promise<File[]> {
     const fileRepository = AppDataSource.getRepository(FileEntity);
     const files = await fileRepository.find({
@@ -126,9 +128,10 @@ export class fileRepositoryImpl implements FileStoragePort {
     const userEntity = await AppDataSource.getRepository(UserEntity).findOne({
       where: {id: userId}
     });
-    console.log("🚀 ~ file: fileRepositoryImpl.ts:124 ~ fileRepositoryImpl ~ userEntity ~ userEntity:", userEntity)
+    console.log("🚀 ~ file: fileRepositoryImpl.ts:135 ~ fileRepositoryImpl ~ shareFile ~ userEntity:", userEntity)
   
     if (!userEntity) {
+      console.log("🚀 ~ file: fileRepositoryImpl.ts:140 ~ fileRepositoryImpl ~ shareFile ~ userEntity:", userEntity)
       logger.error("Usuario no encontrado");
       throw new Error("Usuario no encontrado");
     }
@@ -149,6 +152,7 @@ export class fileRepositoryImpl implements FileStoragePort {
       const sharedFileEntity = new SharedFileEntity();
       sharedFileEntity.file = fileEntity;
       sharedFileEntity.user = userEntity;
+      console.log("🚀 ~ file: fileRepositoryImpl.ts:161 ~ fileRepositoryImpl ~ shareFile ~ userEntity:", userEntity)
       sharedFileEntity.role = roleEntity;
     
       await AppDataSource.getRepository(SharedFileEntity).save(sharedFileEntity);
@@ -172,5 +176,123 @@ export class fileRepositoryImpl implements FileStoragePort {
     return sharedFiles.map((sharedFile) => new File(sharedFile.file));
   }
   
+  async findSharedById(id: string, fileId: string): Promise<File> {
 
+    const userEntity = await AppDataSource.getRepository(UserEntity).findOne({
+      where: {id}
+    });
+    console.log("🚀 ~ file: fileRepositoryImpl.ts:190 ~ fileRepositoryImpl ~ userEntity ~ userEntity:", userEntity)
+
+    if (!userEntity) {
+      console.log("🚀 ~ file: fileRepositoryImpl.ts:194 ~ fileRepositoryImpl ~ findSharedById ~ userEntity:", userEntity)
+      logger.error("Usuario no encontrado");
+      throw new Error("Usuario no encontrado");
+    }
+
+    const fileEntity = await AppDataSource.getRepository(FileEntity).findOneBy({
+      id: fileId
+    });
+
+    if (!fileEntity) {
+      logger.error("Archivo no encontrado");
+      throw new Error("Archivo no encontrado");
+    }
+
+    const shareRepository = AppDataSource.getRepository(SharedFileEntity);
+    const filer = await shareRepository.findOne({
+      where: {user: userEntity , file: fileEntity}
+    })
+    console.log("🚀 ~ file: fileRepositoryImpl.ts:199 ~ fileRepositoryImpl ~ findSharedById ~ fileEntity:", fileEntity)
+
+    return filer ? new File(fileEntity) : null;
+
+  }
+
+  async updateSharedFile(id: string, fileId: string, updateData: Partial<File>): Promise<File> {
+    const userEntity = await AppDataSource.getRepository(UserEntity).findOne({
+      where: {id}
+    });
+    console.log("🚀 ~ file: fileRepositoryImpl.ts:211 ~ fileRepositoryImpl ~ userEntity ~ userEntity:", userEntity)
+
+    if (!userEntity) {
+      logger.error("Usuario no encontrado");
+      throw new Error("Usuario no encontrado");
+    }
+
+    const fileEntity = await AppDataSource.getRepository(FileEntity).findOne({
+      where: {id: fileId}
+    });
+    console.log("🚀 ~ file: fileRepositoryImpl.ts:220 ~ fileRepositoryImpl ~ fileEntity ~ fileEntity:", fileEntity)
+
+    if (!fileEntity) {
+      logger.error("Archivo no encontrado");
+      throw new Error("Archivo no encontrado");
+    }
+
+    const repository = AppDataSource.getRepository(SharedFileEntity);
+    
+    const filer = await repository.findOne({
+      where: {user: userEntity , file: fileEntity},
+      relations: ['role']
+    })
+    console.log("🚀 ~ file: fileRepositoryImpl.ts:243 ~ fileRepositoryImpl ~ updateSharedFile ~ filer:", filer, "role", filer.role.name)
+
+        if (!filer) {
+            logger.error(`FileRepository: Error al modificar al archivo con ID: ${id}.`);
+            throw new Error('Archivo no encontrado');
+        }
+
+    if(filer.role.name == "lector"){
+      logger.error("No puede actualizar este archivo");
+      throw new Error("No tiene permiso de modificar este archivo");
+    } else {
+      AppDataSource.getRepository(FileEntity).merge(fileEntity, updateData);
+        const updatedFile = await AppDataSource.getRepository(FileEntity).save(fileEntity);
+        return updatedFile;
+    }    
+  }
+
+  async deleteSharedFile(id: string, fileId: string): Promise<void> {
+    logger.info("Eliminando file en Repository");
+
+    const userEntity = await AppDataSource.getRepository(UserEntity).findOne({
+      where: {id}
+    });
+    console.log("🚀 ~ file: fileRepositoryImpl.ts:211 ~ fileRepositoryImpl ~ userEntity ~ userEntity:", userEntity)
+
+    if (!userEntity) {
+      logger.error("Usuario no encontrado");
+      throw new Error("Usuario no encontrado");
+    }
+
+    const fileEntity = await AppDataSource.getRepository(FileEntity).findOne({
+      where: {id: fileId}
+    });
+    console.log("🚀 ~ file: fileRepositoryImpl.ts:220 ~ fileRepositoryImpl ~ fileEntity ~ fileEntity:", fileEntity)
+
+    if (!fileEntity) {
+      logger.error("Archivo no encontrado");
+      throw new Error("Archivo no encontrado");
+    }
+
+    const repository = AppDataSource.getRepository(SharedFileEntity);
+    
+    const filer = await repository.findOne({
+      where: {user: userEntity , file: fileEntity},
+      relations: ['role']
+    })
+    console.log("🚀 ~ file: fileRepositoryImpl.ts:284 ~ fileRepositoryImpl ~ deleteSharedFile ~ filer:", filer)
+
+        if (!filer) {
+            logger.error(`FileRepository: Error al modificar al archivo con ID: ${id}.`);
+            throw new Error('Archivo no encontrado');
+        }
+
+    if(filer.role.name == "lector"){
+      logger.error("No puede eliminar este archivo");
+      throw new Error("No tiene permiso de eliminar este archivo");
+    } else {
+      await AppDataSource.getRepository(FileEntity).remove(fileEntity);
+    } 
+  }
 }
