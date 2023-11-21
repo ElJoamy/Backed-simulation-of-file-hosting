@@ -181,3 +181,45 @@ info: FileService: Intentando compartir el archivo con ID: undefined {"timestamp
 info: Archivo compartido con éxito con el usuario undefined {"timestamp":"20/Nov/2023:23:32:24 -0400"}
 info: Archivo con ID: e517e285-4725-47d9-8120-fd9820322c95 compartido con éxito {"timestamp":"20/Nov/2023:23:32:24 -0400"}
 info: ::1 - - [21/Nov/2023:03:32:24 +0000] "POST /api/files/share/e517e285-4725-47d9-8120-fd9820322c95 HTTP/1.1" 200 620 "-" "PostmanRuntime/7.35.0" {"timestamp":"20/Nov/2023:23:32:24 -0400"}
+info: ::1 - - [21/Nov/2023:03:46:06 +0000] "GET /api/roles HTTP/1.1" 200 227 "-" "PostmanRuntime/7.35.0" {"timestamp":"20/Nov/2023:23:46:06 -0400"}
+info: ::1 - - [21/Nov/2023:03:46:16 +0000] "POST /api/users HTTP/1.1" 201 350 "-" "PostmanRuntime/7.35.0" {"timestamp":"20/Nov/2023:23:46:16 -0400"}
+info: Alguna información relevante {"timestamp":"20/Nov/2023:23:51:38 -0400"}
+info: Find File by id {"timestamp":"20/Nov/2023:23:51:38 -0400"}
+info: ::1 - - [21/Nov/2023:03:51:38 +0000] "POST /api/files/ HTTP/1.1" 201 607 "-" "PostmanRuntime/7.35.0" {"timestamp":"20/Nov/2023:23:51:38 -0400"}
+debug: Intentando compartir el archivo con ID: e517e285-4725-47d9-8120-fd9820322c95 {"timestamp":"20/Nov/2023:23:52:09 -0400"}
+info: FileService: Intentando compartir el archivo con ID: undefined {"timestamp":"20/Nov/2023:23:52:09 -0400"}
+info: Archivo compartido con éxito con el usuario undefined {"timestamp":"20/Nov/2023:23:52:09 -0400"}
+info: Archivo con ID: e517e285-4725-47d9-8120-fd9820322c95 compartido con éxito {"timestamp":"20/Nov/2023:23:52:09 -0400"}
+info: ::1 - - [21/Nov/2023:03:52:09 +0000] "POST /api/files/share/e517e285-4725-47d9-8120-fd9820322c95 HTTP/1.1" 200 620 "-" "PostmanRuntime/7.35.0" {"timestamp":"20/Nov/2023:23:52:09 -0400"}
+info: Alguna información relevante {"timestamp":"20/Nov/2023:23:57:35 -0400"}
+info: Find File by id {"timestamp":"20/Nov/2023:23:57:35 -0400"}
+info: ::1 - - [21/Nov/2023:03:57:35 +0000] "POST /api/files/ HTTP/1.1" 201 607 "-" "PostmanRuntime/7.35.0" {"timestamp":"20/Nov/2023:23:57:35 -0400"}
+debug: Intentando compartir el archivo con ID: e517e285-4725-47d9-8120-fd9820322c95 {"timestamp":"20/Nov/2023:23:57:48 -0400"}
+info: FileService: Intentando compartir el archivo con ID: undefined {"timestamp":"20/Nov/2023:23:57:48 -0400"}
+info: Archivo compartido con éxito con el usuario undefined {"timestamp":"20/Nov/2023:23:57:48 -0400"}
+info: Archivo con ID: e517e285-4725-47d9-8120-fd9820322c95 compartido con éxito {"timestamp":"20/Nov/2023:23:57:48 -0400"}
+info: ::1 - - [21/Nov/2023:03:57:48 +0000] "POST /api/files/share/e517e285-4725-47d9-8120-fd9820322c95 HTTP/1.1" 200 620 "-" "PostmanRuntime/7.35.0" {"timestamp":"20/Nov/2023:23:57:48 -0400"}
+info: Alguna información relevante {"timestamp":"20/Nov/2023:23:59:24 -0400"}
+info: Find File by id {"timestamp":"20/Nov/2023:23:59:24 -0400"}
+info: ::1 - - [21/Nov/2023:03:59:24 +0000] "POST /api/files/ HTTP/1.1" 201 607 "-" "PostmanRuntime/7.35.0" {"timestamp":"20/Nov/2023:23:59:24 -0400"}
+debug: Intentando compartir el archivo con ID: e517e285-4725-47d9-8120-fd9820322c95 {"timestamp":"20/Nov/2023:23:59:35 -0400"}
+info: FileService: Intentando compartir el archivo con ID: undefined {"timestamp":"20/Nov/2023:23:59:35 -0400"}
+info: Archivo compartido con éxito con el usuario undefined {"timestamp":"20/Nov/2023:23:59:35 -0400"}
+info: Archivo con ID: e517e285-4725-47d9-8120-fd9820322c95 compartido con éxito {"timestamp":"20/Nov/2023:23:59:35 -0400"}
+info: ::1 - - [21/Nov/2023:03:59:35 +0000] "POST /api/files/share/e517e285-4725-47d9-8120-fd9820322c95 HTTP/1.1" 200 620 "-" "PostmanRuntime/7.35.0" {"timestamp":"20/Nov/2023:23:59:35 -0400"}
+info: Alguna información relevante {"timestamp":"21/Nov/2023:00:00:53 -0400"}
+info: Find File by id {"timestamp":"21/Nov/2023:00:00:53 -0400"}
+info: ::1 - - [21/Nov/2023:04:00:53 +0000] "POST /api/files/ HTTP/1.1" 201 607 "-" "PostmanRuntime/7.35.0" {"timestamp":"21/Nov/2023:00:00:53 -0400"}
+debug: Intentando compartir el archivo con ID: e517e285-4725-47d9-8120-fd9820322c95 {"timestamp":"21/Nov/2023:00:01:00 -0400"}
+info: FileService: Intentando compartir el archivo con ID: undefined {"timestamp":"21/Nov/2023:00:01:00 -0400"}
+info: Archivo compartido con éxito con el usuario undefined {"timestamp":"21/Nov/2023:00:01:00 -0400"}
+info: Archivo con ID: e517e285-4725-47d9-8120-fd9820322c95 compartido con éxito {"timestamp":"21/Nov/2023:00:01:00 -0400"}
+info: ::1 - - [21/Nov/2023:04:01:00 +0000] "POST /api/files/share/e517e285-4725-47d9-8120-fd9820322c95 HTTP/1.1" 200 620 "-" "PostmanRuntime/7.35.0" {"timestamp":"21/Nov/2023:00:01:00 -0400"}
+info: Alguna información relevante {"timestamp":"21/Nov/2023:00:03:03 -0400"}
+info: Find File by id {"timestamp":"21/Nov/2023:00:03:03 -0400"}
+info: ::1 - - [21/Nov/2023:04:03:03 +0000] "POST /api/files/ HTTP/1.1" 201 607 "-" "PostmanRuntime/7.35.0" {"timestamp":"21/Nov/2023:00:03:03 -0400"}
+debug: Intentando compartir el archivo con ID: e517e285-4725-47d9-8120-fd9820322c95 {"timestamp":"21/Nov/2023:00:03:19 -0400"}
+info: FileService: Intentando compartir el archivo con ID: undefined {"timestamp":"21/Nov/2023:00:03:19 -0400"}
+info: Archivo compartido con éxito con el usuario undefined {"timestamp":"21/Nov/2023:00:03:19 -0400"}
+info: Archivo con ID: e517e285-4725-47d9-8120-fd9820322c95 compartido con éxito {"timestamp":"21/Nov/2023:00:03:19 -0400"}
+info: ::1 - - [21/Nov/2023:04:03:19 +0000] "POST /api/files/share/e517e285-4725-47d9-8120-fd9820322c95 HTTP/1.1" 200 620 "-" "PostmanRuntime/7.35.0" {"timestamp":"21/Nov/2023:00:03:19 -0400"}

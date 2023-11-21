@@ -108,51 +108,45 @@ export class fileRepositoryImpl implements FileStoragePort {
   }
 
   async shareFile(fileId: string, userId: string, roleName: string): Promise<ShareFile> {
-    // Buscar la entidad del archivo por su ID
     const fileEntity = await AppDataSource.getRepository(FileEntity).findOneBy({
       id: fileId
     });
+    console.log("🚀 ~ file: fileRepositoryImpl.ts:114 ~ fileRepositoryImpl ~ fileEntity ~ fileEntity:", fileEntity)
   
-    // Si no se encuentra el archivo, lanzar un error
     if (!fileEntity) {
       logger.error("Archivo no encontrado");
       throw new Error("Archivo no encontrado");
     }
   
-    // Buscar la entidad del usuario por su ID
     const userEntity = await AppDataSource.getRepository(UserEntity).findOneBy({
       id: userId
     });
+    console.log("🚀 ~ file: fileRepositoryImpl.ts:124 ~ fileRepositoryImpl ~ userEntity ~ userEntity:", userEntity)
   
-    // Si no se encuentra el usuario, lanzar un error
     if (!userEntity) {
       logger.error("Usuario no encontrado");
       throw new Error("Usuario no encontrado");
     }
   
-    // Buscar la entidad del rol por su nombre
     const roleEntity = await AppDataSource.getRepository(RoleEntity).findOneBy({
       name: roleName
     });
-  
-    // Si no se encuentra el rol, lanzar un error
+    console.log("🚀 ~ file: fileRepositoryImpl.ts:134 ~ fileRepositoryImpl ~ roleEntity ~ roleEntity:", roleEntity)
+
     if (!roleEntity) {
       logger.error("Rol no encontrado");
       throw new Error("Rol no encontrado");
     }
   
-    // Crear la entidad SharedFile
     const sharedFileEntity = new SharedFileEntity();
     sharedFileEntity.file = fileEntity;
     sharedFileEntity.user = userEntity;
     sharedFileEntity.role = roleEntity;
   
-    // Guardar la entidad SharedFile en la base de datos
     await AppDataSource.getRepository(SharedFileEntity).save(sharedFileEntity);
   
     logger.info(`Archivo compartido con éxito con el usuario ${userId}`);
     
-    // Devolver el SharedFile como un objeto de dominio
     return new ShareFile(sharedFileEntity);
   }  
 

@@ -120,6 +120,7 @@ export class FileService {
     async shareFile(fileId: string, userId: string, name: string): Promise<ShareFile> {
         logger.info(`FileService: Intentando compartir el archivo con ID: ${fileId}`);
         const sharedFile = await this.fileStoragePort.shareFile(fileId, userId, name);
+        console.log("🚀 ~ file: fileService.ts:123 ~ FileService ~ shareFile ~ sharedFile:", sharedFile)
         return sharedFile;
     }
     

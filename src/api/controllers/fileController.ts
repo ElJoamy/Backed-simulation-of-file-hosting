@@ -81,6 +81,7 @@ export class FileController {
     public async shareFile(req: Request, res: Response): Promise<Response> {
         const { id } = req.params;
         const updateData = req.body;
+        console.log("🚀 ~ file: fileController.ts:84 ~ FileController ~ shareFile ~ updateData:", updateData)
         try {
             logger.debug(`Intentando compartir el archivo con ID: ${id}`);
             const updatedFile = await this.fileService.shareFile(updateData.fileId, updateData.userId, updateData.name);
