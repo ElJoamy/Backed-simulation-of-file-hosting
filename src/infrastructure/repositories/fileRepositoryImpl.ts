@@ -109,9 +109,10 @@ export class fileRepositoryImpl implements FileStoragePort {
 
   async shareFile(fileId: string, userId: string, roleName: string): Promise<ShareFile> {
     // Buscar la entidad del archivo por su ID
-    const fileEntity = await AppDataSource.getRepository(FileEntity).findOneBy({
-      id: fileId
+    const fileEntity = await AppDataSource.getRepository(FileEntity).findOne({
+      where: { id: fileId }
     });
+    console.log("🚀 ~ file: fileRepositoryImpl.ts:116 ~ fileRepositoryImpl ~ fileEntity ~ fileEntity:", fileEntity, "fileId", fileId)
   
     // Si no se encuentra el archivo, lanzar un error
     if (!fileEntity) {
@@ -120,8 +121,8 @@ export class fileRepositoryImpl implements FileStoragePort {
     }
   
     // Buscar la entidad del usuario por su ID
-    const userEntity = await AppDataSource.getRepository(UserEntity).findOneBy({
-      id: userId
+    const userEntity = await AppDataSource.getRepository(UserEntity).findOne({
+      where: {id: userId}
     });
   
     // Si no se encuentra el usuario, lanzar un error
@@ -131,8 +132,8 @@ export class fileRepositoryImpl implements FileStoragePort {
     }
   
     // Buscar la entidad del rol por su nombre
-    const roleEntity = await AppDataSource.getRepository(RoleEntity).findOneBy({
-      name: roleName
+    const roleEntity = await AppDataSource.getRepository(RoleEntity).findOne({
+      where: {name: roleName}
     });
   
     // Si no se encuentra el rol, lanzar un error
