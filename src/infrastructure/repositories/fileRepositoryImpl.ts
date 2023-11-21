@@ -108,18 +108,20 @@ export class fileRepositoryImpl implements FileStoragePort {
   }
 
   async shareFile(fileId: string, userId: string, roleName: string): Promise<ShareFile> {
+    // Buscar la entidad del archivo por su ID
     const fileEntity = await AppDataSource.getRepository(FileEntity).findOneBy({
       id: fileId
     });
-    console.log("🚀 ~ file: fileRepositoryImpl.ts:114 ~ fileRepositoryImpl ~ fileEntity ~ fileEntity:", fileEntity)
+    console.log("🚀 ~ file: fileRepositoryImpl.ts:116 ~ fileRepositoryImpl ~ fileEntity ~ fileEntity:", fileEntity, "fileId", fileId)
   
     if (!fileEntity) {
       logger.error("Archivo no encontrado");
       throw new Error("Archivo no encontrado");
     }
   
-    const userEntity = await AppDataSource.getRepository(UserEntity).findOneBy({
-      id: userId
+    // Buscar la entidad del usuario por su ID
+    const userEntity = await AppDataSource.getRepository(UserEntity).findOne({
+      where: {id: userId}
     });
     console.log("🚀 ~ file: fileRepositoryImpl.ts:124 ~ fileRepositoryImpl ~ userEntity ~ userEntity:", userEntity)
   
@@ -128,8 +130,9 @@ export class fileRepositoryImpl implements FileStoragePort {
       throw new Error("Usuario no encontrado");
     }
   
-    const roleEntity = await AppDataSource.getRepository(RoleEntity).findOneBy({
-      name: roleName
+    // Buscar la entidad del rol por su nombre
+    const roleEntity = await AppDataSource.getRepository(RoleEntity).findOne({
+      where: {name: roleName}
     });
     console.log("🚀 ~ file: fileRepositoryImpl.ts:134 ~ fileRepositoryImpl ~ roleEntity ~ roleEntity:", roleEntity)
 

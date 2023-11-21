@@ -84,7 +84,7 @@ export class FileController {
         console.log("🚀 ~ file: fileController.ts:84 ~ FileController ~ shareFile ~ updateData:", updateData)
         try {
             logger.debug(`Intentando compartir el archivo con ID: ${id}`);
-            const updatedFile = await this.fileService.shareFile(updateData.fileId, updateData.userId, updateData.name);
+            const updatedFile = await this.fileService.shareFile(updateData.file, updateData.user, updateData.role);
             logger.info(`Archivo con ID: ${id} compartido con éxito`);
             return res.status(200).json({ file: updatedFile });
         } catch (error) {
