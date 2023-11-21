@@ -33,3 +33,8 @@ export const redis_env = {
     password: process.env.REDIS_PASSWORD || ''
 }
 console.log(redis_env);
+
+export const hosting = {
+    location: process.env.HOSTING_LOCATION || 'Drive'
+}
+console.log(hosting);

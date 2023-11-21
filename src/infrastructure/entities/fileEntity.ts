@@ -12,7 +12,7 @@ export class FileEntity implements IFileEntity {
     @Column({ type: 'boolean' })
     is_directory!: boolean;
 
-    @Column({ type: 'varchar', unique: true })
+    @Column({ type: 'varchar'})
     path!: string;
 
     @Column({ type: 'bigint'})
@@ -34,7 +34,7 @@ export class FileEntity implements IFileEntity {
     @JoinColumn({ name: 'user_id' })
     user_id!: UserEntity; //change to userEntity
 
-    @ManyToOne(() => (FileEntity || UserEntity), { onDelete: 'CASCADE'})
+    @ManyToOne(() => (FileEntity || UserEntity), { onDelete: 'CASCADE', nullable: true})
     @JoinColumn({ name: 'directory_id' })
-    directory_id!: FileEntity | UserEntity; //  //change to userEntity || fileEntity
+    directory_id!: FileEntity | null; //  //change to userEntity || fileEntity
 }

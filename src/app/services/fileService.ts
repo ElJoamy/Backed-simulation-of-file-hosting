@@ -93,10 +93,9 @@ export class FileService {
         const fileEntity: IFileEntity = {
             name: fileDto.name,
             is_directory: fileDto.is_directory,
-            path: fileDto.path,
             type: fileDto.type,
             version: 1,
-            directory_id: directory || user,
+            directory_id: directory || null,
             user_id: user,
             created_at: new Date(),
             last_modified: new Date(),

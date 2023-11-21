@@ -43,11 +43,12 @@ export class fileRepositoryImpl implements FileStoragePort {
             path: file.path,
             user_id: file.user_id,
             is_shared: file.is_shared || false,
-            directory_id: file.directory_id || file.user_id,
+            directory_id: file.directory_id || null,
             created_at: file.created_at || new Date(),
             last_modified: file.created_at || new Date(),
             version: file.version || 1
         });
+        console.log(fileEntity);
 
         const fileResponse = await fileRepository.save(fileEntity);
 
