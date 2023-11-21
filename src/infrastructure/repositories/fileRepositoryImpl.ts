@@ -1,3 +1,4 @@
+import { hosting } from "../config/config";
 import { FileStoragePort } from "../../domain/interfaces/fileStoragePort";
 import { File } from "../../domain/models/file";
 import { ShareFile } from "../../domain/models/shareFile";
@@ -42,14 +43,18 @@ export class fileRepositoryImpl implements FileStoragePort {
             name: file.name,
             is_directory: file.is_directory || false,
             type: file.type || "txt",
-            path: file.path,
+            path: file.path || hosting.location,
             user_id: file.user_id,
             is_shared: file.is_shared || false,
             directory_id: file.directory_id || null,
             created_at: file.created_at || new Date(),
             last_modified: file.created_at || new Date(),
             version: file.version || 1
-        });      
+        });     
+
+        if (fileEntity.is_directory) {
+            fileEntity.type = "folder";
+        }
 
         const fileResponse = await fileRepository.save(fileEntity);
 
@@ -108,12 +113,10 @@ export class fileRepositoryImpl implements FileStoragePort {
   }
 
   async shareFile(fileId: string, userId: string, roleName: string): Promise<ShareFile> {
-    // Buscar la entidad del archivo por su ID
     const fileEntity = await AppDataSource.getRepository(FileEntity).findOneBy({
       id: fileId
     });
     console.log("🚀 ~ file: fileRepositoryImpl.ts:116 ~ fileRepositoryImpl ~ fileEntity ~ fileEntity:", fileEntity, "fileId", fileId)
-  
     if (!fileEntity) {
       logger.error("Archivo no encontrado");
       throw new Error("Archivo no encontrado");
@@ -140,17 +143,27 @@ export class fileRepositoryImpl implements FileStoragePort {
       logger.error("Rol no encontrado");
       throw new Error("Rol no encontrado");
     }
-  
-    const sharedFileEntity = new SharedFileEntity();
-    sharedFileEntity.file = fileEntity;
-    sharedFileEntity.user = userEntity;
-    sharedFileEntity.role = roleEntity;
-  
-    await AppDataSource.getRepository(SharedFileEntity).save(sharedFileEntity);
-  
-    logger.info(`Archivo compartido con éxito con el usuario ${userId}`);
+
+    if (fileEntity.is_shared) {
     
-    return new ShareFile(sharedFileEntity);
+      const sharedFileEntity = new SharedFileEntity();
+      sharedFileEntity.file = fileEntity;
+      sharedFileEntity.user = userEntity;
+      sharedFileEntity.role = roleEntity;
+    
+      await AppDataSource.getRepository(SharedFileEntity).save(sharedFileEntity);
+    
+      logger.info(`Archivo compartido con éxito con el usuario ${userId}`);
+      
+      return new ShareFile(sharedFileEntity);
+    }
+    else {
+      logger.error("Archivo no compartido");
+      throw new Error("Archivo no compartido");
+    }
+
+
+
   }  
 
 }

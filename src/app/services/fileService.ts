@@ -100,7 +100,7 @@ export class FileService {
             user_id: user,
             created_at: new Date(),
             last_modified: new Date(),
-            is_shared: false
+            is_shared: fileDto.is_shared
         };
 
         const newFile = new File(fileEntity);

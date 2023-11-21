@@ -1,6 +1,5 @@
 import { IFileEntity } from "../entities/IFileEntity";
 import { IUserEntity } from "../entities/IUserEntity";
-import { hosting } from "../../infrastructure/config/config";
 
 export class File {
     id: string;
@@ -19,7 +18,7 @@ export class File {
         this.id  = fileEntity.id,
         this.name = fileEntity.name,
         this.is_directory = fileEntity.is_directory,
-        this.path = hosting.location,
+        this.path = fileEntity.path,
         this.version = fileEntity.version,
         this.user_id = fileEntity.user_id,
         this.directory_id = fileEntity.directory_id;
